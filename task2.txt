@@ -1,0 +1,62 @@
+public class student {
+    // Student Class
+    // Roll Nos:21891,21863,21854,21878
+
+    String name;
+    int rollno, marks_obtained;
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setRollno(int rollno) {
+        this.rollno = rollno;
+    }
+
+    public void setMarks_obtained(int marks_obtained) {
+        this.marks_obtained = marks_obtained;
+    }
+
+    double calc_percentage() {
+        double perc;
+        perc = marks_obtained * 100 / 500;
+        return (perc);
+    }
+}
+
+// Student Test Class
+//Roll Nos:21891,21863,21854,21878
+import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+
+public class studenttest {
+    double percentage;
+    student s = new student();
+
+    @Test
+    public void testpercent() {
+        s.setName("Student1");
+        s.setRollno(21000);
+        s.setMarks_obtained(250);
+        percentage = s.calc_percentage();
+        assertEquals(50, percentage, 0.0);
+    }
+}
+
+// Test Runner Class
+//Roll Nos:21891,21863,21854,21878
+import org.junit.runner.JUnitCore;
+import org.junit.runner.Result;
+import org.junit.runner.notification.Failure;
+
+public class testrunner1 {
+    public static void main(String[] agrs) {
+        Result result = JUnitCore.runClasses(studenttest.class);
+
+        for (Failure failure : result.getFailures()) {
+            System.out.println(failure.toString());
+        }
+
+        System.out.println(result.wasSuccessful());
+    }
+}
